@@ -13,7 +13,7 @@ export function LoginPage(){
                 <LoginInputs/>
                 <button className="w-2/5 bg-cyan-700 h-12 mt-5 mb-5 rounded-full">Login</button>
 
-                <p>Don't have an account <Link to='/SignupPage'> Sign Upp </Link> </p>
+                <p>Don't have an account <Link to='/SignupPage'> Sign Up </Link></p>
 
             </div>
 

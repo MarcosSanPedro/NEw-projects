@@ -1,8 +1,11 @@
 import LogoSVG  from '../../public/assets/logo-no-background.svg';
 import { LoginInputs } from '../components/LoginInputs';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 export function SignupPage(){
+    const [name, setName] = useState('')
+console.log(name)
 
     return(
         <div className="h-screen w-full bg-cover bg-center" style={{backgroundImage: "url('/assets/parque.jpg')"}} >
@@ -12,7 +15,7 @@ export function SignupPage(){
             <p className="mb-5">Create an Account</p>
             <fieldset className='w-4/5'>
             <legend><label htmlFor="name">Name:</label></legend>
-            <input className= "w-full p-2 border mb-3  bg-gray-800 border-white rounded" type="password" id="userpassword" name="userpassword" onChange={(e)=> setPassword(e.target.value)}/>
+            <input className= "w-full p-2 border mb-3  bg-gray-800 border-white rounded" type="password" id="userpassword" name="userpassword" onChange={(e)=> setName(e.target.value)}/>
             </fieldset>
             <LoginInputs/>
             <button className="w-2/5 bg-cyan-700 h-12 mt-5 mb-5 rounded-full">Login</button>
