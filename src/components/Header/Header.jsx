@@ -6,7 +6,7 @@ import CartSVG from '../../../public/assets/cart.svg'
 export function Header(){
     const headerItems = [
         {tittle: 'Park Info', dropdownItems: ['pi option1' ,'pi option1']},
-        {tittle: 'Attractions', dropdownItems: ['att option1' ,' att option1']},
+        {tittle: 'Attraction s', dropdownItems: ['att option1' ,' att option1']},
         {tittle: 'Events', dropdownItems: ['ev option 1', 'ev option 2']}    
     ];
     
