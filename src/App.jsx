@@ -7,7 +7,6 @@ function App() {
   return (
     <div className='container'>
     <div><Header /></div>
-    <div><Navbar /></div>
     <div> <Hero/> </div>
     </div>
   );
