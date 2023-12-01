@@ -1,7 +1,9 @@
 import Navbar from "../components/NavBarV1";
 
-export function ParkInfoPage ([
+
+export function ParkInfoPage (){
+    
     return(
         <Navbar/>
     )
-])
+}

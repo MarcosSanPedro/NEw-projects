@@ -2,6 +2,7 @@ import { Dropdown } from "./Dropdown";
 import UserLogo from '../../../public/assets/logo-black.svg'
 import LogoSVG  from '../../../public/assets/logo-no-background.svg';
 import CartSVG from '../../../public/assets/cart.svg'
+import Weather from "../Api/Weather";
 
 export function Header(){
     const headerItems = [
@@ -39,7 +40,7 @@ export function Header(){
             ))
 }
 <div className="flex items-center gap-5 mr-5 lg: ml-16">
-                <img src={UserLogo} alt="asd" className="h-8" />
+                <Weather />
                 <img src={UserLogo} alt="asd" className="h-8" />
                 <img src={CartSVG} alt="alt" className="h-8"/>
                 
