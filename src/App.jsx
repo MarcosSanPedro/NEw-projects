@@ -7,13 +7,14 @@ import { Events } from './components/Events';
 
 import Chrismas from '../public/assets/Christmas-Events.jpg'
 
+import { Hero } from './components/Hero';
+import { Header } from './components/Header/Header';
 
 function App() {
   
-
   return (
     
-    <Router>
+    { /* <Router>
      <Routes>
       <Route path='/' element={<LoginPage/>} />
       <Route path='/SignupPage' element={<SignupPage/>} />
@@ -21,9 +22,13 @@ function App() {
       <Route path='/EventsPage' element={ <Events image={Chrismas} tittle='Hola' description='hi' badges={['hola', 'hi']} />} /> 
      </Routes>
      </Router>
-     
-    
-  )
+  ) */ }
+
+    <div className='container'>
+    <div> <Header /> </div>
+    <div> <Hero /> </div>
+    </div>
+  );
 }
 
-export default App
+export default App;
