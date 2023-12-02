@@ -4,8 +4,12 @@ import UserLogo from '../../../public/assets/logo-black.svg';
 import LogoSVG from '../../../public/assets/logo-no-background.svg';
 import CartSVG from '../../../public/assets/cart.svg';
 import Weather from "../Api/Weather";
+import { useLoaderData } from "react-router-dom";
+
 
 export function Header() {
+  const weather = useLoaderData()
+
   const headerItems = [
     { title: 'Park Info', dropdownItems: ['pi option1', 'pi option1'] },
     { title: 'Attractions', dropdownItems: ['att option1', ' att option1'] },
@@ -47,7 +51,7 @@ export function Header() {
             />
           ))}
           <div className="flex items-center gap-5 mr-5 lg:ml-16">
-            <Weather />
+            <Weather data={weather}/>
             <img src={UserLogo} alt="asd" className="h-8" />
             <img src={CartSVG} alt="alt" className="h-8" />
           </div>
