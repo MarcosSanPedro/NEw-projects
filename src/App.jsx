@@ -1,31 +1,32 @@
-import { LoginPage } from './pages/LoginPage'
-import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
-import { SignupPage } from './pages/SignupPage';
-import { Header } from './components/Header';
-import { EventsPage } from './pages/EventsPage';
-
-import { Hero } from './components/Hero';
-import { Header } from './components/Header/Header';
+import { Navbar } from "./components/Navbar";
+import { Outlet } from "react-router-dom";
 
 function App() {
-  
-  return (
-    
-    { /* <Router>
-     <Routes>
-      <Route path='/' element={ <EventsPage/>} />
-      <Route path='/SignupPage' element={<SignupPage/>} />
-      <Route path='/MainPage' element={<Header/>}  />
-      <Route path='/EventsPage' element={<LoginPage/> }  /> 
-     </Routes>
-     </Router>
-  ) */ }
-
-    <div className='container'>
-    <div> <Header /> </div>
-    <div> <Hero /> </div>
-    </div>
-  );
+	{
+		/* <Router>
+   <Routes>
+    <Route path='/' element={ <EventsPage/>} />
+    <Route path='/SignupPage' element={<SignupPage/>} />
+    <Route path='/MainPage' element={<Header/>}  />
+    <Route path='/EventsPage' element={<LoginPage/> }  /> 
+   </Routes>
+   </Router>
+) */
+	}
+	return (
+		<div className="">
+			<Navbar />
+			<Outlet />
+			<footer className="p-10 footer bg-base-200 text-base-content footer-center">
+				<div>
+					<p>
+						Website made with{" "}
+						<a href="https://windmillui.com">Windmill UI</a>
+					</p>
+				</div>
+			</footer>
+		</div>
+	);
 }
 
 export default App;

@@ -2,9 +2,9 @@
 // eslint-disable-next-line no-unused-vars
 import { useState, useEffect } from "react";
 
-export const getWeather = async (city, apiKey) => {
+export const getWeather = async (city, url) => {
   const response = fetch(
-    `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`
+    `${url}`
   )
   const data = await response.json
   console.log(data)
