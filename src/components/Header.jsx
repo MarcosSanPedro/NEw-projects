@@ -2,7 +2,7 @@ import UserLogo from '../../public/assets/logo-black.svg'
 import CartSVG from '../../public/assets/cart.svg'
 
 
-export function Header2(){
+export function Header(){
     return(
         <div className="navbar bg-slate-400">
   <div className="navbar-start">
@@ -12,7 +12,7 @@ export function Header2(){
       </div>
       <ul className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
         <li><a>Park Info</a></li>
-        <li><a>Attractions</a></li>
+        <li><a>Events</a></li>
         <li>
           <a>Things to do</a>
           <ul className="p-2">
@@ -26,9 +26,9 @@ export function Header2(){
     <a className="btn btn-ghost text-3xl">ScripPark</a>
   </div>
   <div className="navbar-center hidden lg:flex">
-    <ul className="menu menu-horizontal px-1 text-2xl">
+    <ul className="menu menu-horizontal px-1 text-2xl z-[1]">
       <li><a>Park Info</a></li>
-      <li><a>Attractions</a></li>
+      <li><a>Events</a></li>
       <li>
         <details>
           <summary>Things to do</summary>
@@ -44,7 +44,23 @@ export function Header2(){
   <div className="navbar-end gap-4 mr-4">
   <img src={UserLogo} alt="asd" className='w-7' />
   <img src={CartSVG} alt="alt"  className='w-7'  />
-  <img src={UserLogo} alt="asd" className='w-7' />
+  <div className="drawer drawer-end w-fit z-10">
+  <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
+  <div className="drawer-content">
+    {/* Page content here */}
+    <label htmlFor="my-drawer-4" className="drawer-button"><img src={UserLogo} alt="asd" className='w-7' /></label>
+  </div> 
+  <div className="drawer-side">
+    <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
+    <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
+      
+      <li><a><img src={UserLogo} alt="asd" className='w-7' /></a></li>
+      <li><a>Sidebar Item 2</a></li>
+      <li><a>Sidebar Item 2</a></li>
+    </ul>
+  </div>
+</div>
+  
     
   </div>
 </div>

@@ -1,4 +1,4 @@
-export function Events({image,tittle, description, badges}){
+export function Events({image,tittle, description, time, badges}){
 
     return(
         <div className="card w-96 bg-base-100 shadow-xl">
@@ -8,6 +8,7 @@ export function Events({image,tittle, description, badges}){
       {tittle}
     </h2>
     <p>{description}</p>
+    <p className="text text-sm">{time}</p>
     <div className="card-actions justify-end">
         {
         badges.map((element, index)=> (
