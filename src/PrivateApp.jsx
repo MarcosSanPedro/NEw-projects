@@ -2,7 +2,7 @@ import { Hero } from './components/Hero';
 import { Header } from './components/Header/Header';
 import Navbar from './components/NavBarV1';
 
-function App() {
+function PrivateApp() {
   
   return (
     <div className='container'>
@@ -14,4 +14,4 @@ function App() {
   );
 }
 
-export default App;
+export default PrivateApp;
