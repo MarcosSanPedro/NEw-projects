@@ -1,7 +1,17 @@
+import { useLoaderData } from "react-router-dom";
 import { Events } from "../components/Events";
-// import { themParks } from "../utils/sampleData";
+import { themParks } from "../utils/sampleData";
+import { useEffect } from "react";
+
+
 
 export function EventsPage() {
+	const data = useLoaderData()
+
+	useEffect(()=>{
+		console.log('loader', data)
+	}, [data])
+
 	return (
 		<div>
 			<div className="grid grid-cols-1 m-auto w-fit mt-6 gap-5 md:grid-cols-2 xl:grid-cols-3">
@@ -12,7 +22,7 @@ export function EventsPage() {
 					time="Friday 27, 9:00pm-12:am"
 					badges={["hola", "hi"]}
 				/>
-				{/* themParks
+				{ themParks
 					? themParks.map((themPark) => (
 							<Events
 								key={themPark.name}
@@ -22,7 +32,9 @@ export function EventsPage() {
 								badges={[themPark.city, themPark.state, themPark.country]}
 							/>
 					  ))
-					: null */}
+					: null }
+
+					
 
 				<Events
 					image="Christmas-Events.jpg"
