@@ -11,7 +11,7 @@ export function Header() {
   const weather = useLoaderData()
 
   const headerItems = [
-    { title: 'Park Info', dropdownItems: ['Thrill Rides', 'Roller Coasters'] },
+    { title: 'Park Info', dropdownItems: ['pi option1', 'pi option1'] },
     { title: 'Attractions', dropdownItems: ['att option1', ' att option1'] },
     { title: 'Events', dropdownItems: ['ev option 1', 'ev option 2'] }
   ];

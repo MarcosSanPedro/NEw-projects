@@ -11,7 +11,7 @@ const Navbar = () => {
   ];
 
   return (
-    <div className="flex navbar bg-gray-600 text-primary-content justify-between items-center w-screen p-3 ">
+    <div className="navbar bg-gray-600 text-primary-content justify-between items-center w-screen p-3 ">
       {/* Left side container for Logo and Links */}
       <div className="flex justify-left items-center">
         {/* Logo */}
@@ -24,7 +24,7 @@ const Navbar = () => {
               <a href="#" className="px-4 py-2 hover:text-cyan-400">
                 {link}
               </a>
-              <div className="hidden group-hover:block absolute bg-gray-600 text-base text-white mt-2 p-2 place-content-center">
+              <div className="hidden group-hover:block absolute bg-white-800 text-base text-white mt-2 p-2 place-content-center">
                 {options[index].map((option, i) => (
                   <a key={i} href="#" className="block py-1">
                     {option}
