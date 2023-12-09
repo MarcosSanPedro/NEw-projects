@@ -10,6 +10,7 @@ import { LoginInputs } from "./components/LoginInputs.jsx";
 import React from "react";
 import { Movies } from "./pages/Movies.jsx";
 import { TVShows } from "./pages/TVShows.jsx";
+import Search from "./pages/Search.jsx";
 
 
 const withAuthProvider = (Component, requireAuth = false) => {
@@ -43,6 +44,10 @@ const router = createBrowserRouter([
             {
                 path: "/TVShows",
                 element: <TVShows/>,
+            },
+            {
+                path: "/Search",
+                element: <Search/>,
             },
         ],
     },

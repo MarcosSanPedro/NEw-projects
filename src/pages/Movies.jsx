@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import tmdbService from "./../utils/tmdbService";
-import CategoryList from "../components/CategoryList";
+import GridGenre from "../components/GridGenre";
 
 export function Movies() {
   const [selectedGenre, setSelectedGenre] = useState('28');
@@ -9,7 +9,7 @@ export function Movies() {
   const fetchGenreMovies = async () => {
     try {
       if (selectedGenre) {
-        const totalPages = 5; // Cambia este número al número de páginas que desees
+        const totalPages = 6; // Cambia este número al número de páginas que desees
         const movies = await tmdbService.searchMoviesByGenre(selectedGenre, totalPages);
         
         // Barajar las películas aleatoriamente
@@ -44,16 +44,23 @@ export function Movies() {
             <select name="genre" id="genre" onChange={(e) => setSelectedGenre(e.target.value)}
         value={selectedGenre}>
                 <option value="28">Action</option>
+                <option value="12">Adventure</option>
+                <option value="16">Animation</option>
+                <option value="80">Crime</option>
                 <option value="35">Comedy</option>
                 <option value="99">Documentary</option>
+                <option value="14">Fantasy</option>
                 <option value="27">Horror</option>
+                <option value="10402">Music</option>
+                <option value="9648">Mystey</option>
                 <option value="10749">Romance</option>
-                <option value="28">Action</option>
-                <option value="28">Action</option>
-                <option value="28">Action</option>
+                <option value="878">Science Fiction</option>
+                <option value="53">Thriller</option>
+                <option value="10752">War</option>
             </select>
 
-            <CategoryList items={genreMovies} />
+            <GridGenre items={genreMovies} />
+            
             
 
         </div>

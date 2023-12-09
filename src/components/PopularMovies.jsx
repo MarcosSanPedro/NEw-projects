@@ -1,4 +1,4 @@
-// components/PopularMovies.jsx
+/* // components/PopularMovies.jsx
 import { useEffect, useState } from "react";
 import tmdbService from "../services/tmdbService";
 
@@ -30,4 +30,4 @@ const PopularMovies = () => {
     );
 };
 
-export default PopularMovies;
+export default PopularMovies; */

@@ -18,6 +18,18 @@ const tmdbService = {
         return results.flat();
       },
 
+      async searchMulti(query) {
+        try {
+          const response = await fetch(
+            `${apiUrl}/search/multi?api_key=${apiKey}&query=${query}`
+          );
+          const data = await response.json();
+          return data.results;
+        } catch (error) {
+          throw new Error('Error searching multi', error);
+        }
+      },
+    
 
       async getUpcomingMovies(pageCount = 1) {
         // Crea un array de promesas para realizar solicitudes para cada página
@@ -43,6 +55,8 @@ const tmdbService = {
             .then(response => response.json())
             .then(data => data.results);
         });
+
+        
     
         // Espera a que todas las promesas se resuelvan y combina los resultados
         const results = await Promise.all(promises);
@@ -77,6 +91,23 @@ const tmdbService = {
         throw new Error('Error fetching genre movies', error);
       }
     },
+
+    async searchTvShowsByGenre(genre, totalPages = 1) {
+      try {
+        let tvShows = [];
+        for (let page = 1; page <= totalPages; page++) {
+          const response = await fetch(
+            `${apiUrl}/discover/tv?api_key=${apiKey}&with_genres=${genre}&page=${page}`
+          );
+          const data = await response.json();
+          tvShows = tvShows.concat(data.results);
+        }
+        return tvShows;
+      } catch (error) {
+        throw new Error('Error fetching genre TV shows', error);
+      }
+    },
+  
   
     
     async getTopRatedTVShows(pageCount = 1) {
