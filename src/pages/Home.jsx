@@ -1,13 +1,13 @@
 //creates the rows for title types(Popular, TopRated etc...)
 import React from 'react'
-import Main from '../components/Main'
 import Row from '../components/Row'
 import requests from '../Requests'
+import Hero from '../components/Hero'
 
 const Home = () => {
   return (
     <>
-        <Main />
+        <Hero />
         <Row rowID='1' title='UpComing' fetchURL={requests.requestUpcoming} />
         <Row rowID='2' title='Popular' fetchURL={requests.requestPopular} />
         <Row rowID='3' title='Trending' fetchURL={requests.requestTrending} />
