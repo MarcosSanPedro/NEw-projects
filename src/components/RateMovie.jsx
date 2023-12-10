@@ -4,7 +4,7 @@ import { FaThumbsUp, FaThumbsDown } from 'react-icons/fa';
 import requests from '../Requests';
 
 
-const RateMovie = ({item}) => {
+const RateMovie = ({ item }) => {
   
     const [movies, setMovies] = useState ([]);
 
@@ -12,7 +12,6 @@ const RateMovie = ({item}) => {
 
     useEffect(() => {
         axios.get(requests.requestsPopular).then((response) => {
-          console.log('Response:', response);
           setMovies(response.data.results);
         });
       }, []);
