@@ -30,6 +30,28 @@ const tmdbService = {
         }
       },
 
+      async getRandomMedia() {
+        try{
+        // Elige aleatoriamente entre películas y programas de televisión
+        const mediaType = Math.random() < 0.5 ? 'movie' : 'tv';
+        
+        // Obtiene una página aleatoria para evitar la repetición de recomendaciones
+        const randomPage = Math.floor(Math.random() * 500) + 1;
+      
+        // Realiza la solicitud a la API de TMDB para obtener una película o programa de televisión aleatorio
+        const response = await fetch(`${apiUrl}/trending/${mediaType}/day?api_key=${apiKey}&page=${randomPage}`);
+        const data = await response.json();
+      
+        // Elige aleatoriamente un elemento de los resultados
+        const randomIndex = Math.floor(Math.random() * data.results.length);
+        return data.results[randomIndex];
+      }catch (error) {
+        throw new Error('Error searching multi', error);
+      }
+      },
+      
+     
+
       async getRandomMovie() {
         try {
           // Obtener un número aleatorio de página (puede ajustarse según tus necesidades)
