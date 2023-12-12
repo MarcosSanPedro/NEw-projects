@@ -1,11 +1,11 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
 /*NavbarV1.css*/
 .group:hover .group-hover\:block {
-  display: block;
+    display: block;
 }
 .group-hover\:block {
-  display: none;
+    display: none;
 }
