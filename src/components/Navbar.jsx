@@ -1,21 +1,23 @@
-/* import { useState } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from "react-router-dom";
+import { useState, useEffect } from 'react';
 import tmdbService from './../utils/tmdbService';
+import CategoryList from '../components/CategoryList';
 
 export function Navbar() {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [redirectToSearch, setRedirectToSearch] = useState(false);
 
-  const handleSearchSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const results = await tmdbService.searchMulti(searchQuery);
-      // Habilita la redirección a la página de búsqueda con los resultados
-      setRedirectToSearch(true);
-    } catch (error) {
-      console.error('Error searching', error);
-    }
-  };
+    const [searchQuery, setSearchQuery] = useState('');
+    const [searchResults, setSearchResults] = useState([]);
+    const [searchType, setSearchType] = useState('multi'); // Puede ser 'movie', 'tv', o 'multi'
+
+    const handleSearchSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const results = await tmdbService.searchMulti(searchQuery);
+            setSearchResults(results);
+        } catch (error) {
+            console.error('Error searching', error);
+        }
+    };
 
     return (
         <div className="navbar bg-base-100">
@@ -78,19 +80,16 @@ export function Navbar() {
                 </ul>
             </div>
             <div className="flex-none gap-2 navbar-end">
-        <form onSubmit={handleSearchSubmit} className="form-control">
-          <input
-            type="text"
-            id="searchQuery"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="input input-bordered w-24 md:w-auto"
-            placeholder="Search"
-          />
-          <button type="submit" className="btn btn-primary">
-            Search
-          </button>
-        </form>
+                <form onSubmit={handleSearchSubmit} className="form-control">
+                    <input
+                        type="text"
+                        id="searchQuery"
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        className="input input-bordered w-24 md:w-auto"
+                    />
+                    <Link to='/Search'><button type="submit">Search</button></Link>
+                </form>
                 <div className="dropdown dropdown-end">
                     <div
                         tabIndex={0}
@@ -126,16 +125,18 @@ export function Navbar() {
         </div>
     );
 }
- */
 
 
-import { Link } from "react-router-dom";
+
+/* import { Link } from "react-router-dom";
 import { useState, useEffect } from 'react';
 import tmdbService from './../utils/tmdbService';
 import CategoryList from '../components/CategoryList';
 
 
 export function Navbar() {
+
+
 
     return (
         <div className="navbar bg-base-100">
@@ -198,10 +199,12 @@ export function Navbar() {
                 </ul>
             </div>
             <div className="flex-none gap-2 navbar-end">
-            <form  className="form-control"> 
+            <form onSubmit={handleSearchSubmit} className="form-control"> 
                    <Link to='/Search'> <input
                         type="text"
-                
+                        id="searchQuery"
+                        value={searchQuery}
+                     onChange={(e) => setSearchQuery(e.target.value)}
                         className="input input-bordered w-24 md:w-auto"
                     /></Link>
                 </form>
@@ -241,3 +244,4 @@ export function Navbar() {
         </div>
     );
 }
+ */

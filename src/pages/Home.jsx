@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import tmdbService from "./../utils/tmdbService";
 import CategoryList from "../components/CategoryList";
+import Recommendation from "../components/Recommendation";
 
 const Home = () => {
     const [topRatedMovies, setTopRatedMovies] = useState([]);
@@ -81,6 +82,8 @@ const Home = () => {
         <div>
             <h1>Movie Recommendation Platform</h1>
             {/* Agrega tu barra de búsqueda aquí */}
+            
+            <Recommendation/>
 
             <CategoryList title="Top Rated Movies" items={topRatedMovies} />
             <CategoryList title="Top Rated TV Shows" items={topRatedTvShows} />

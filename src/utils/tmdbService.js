@@ -29,6 +29,26 @@ const tmdbService = {
           throw new Error('Error searching multi', error);
         }
       },
+
+      async getRandomMovie() {
+        try {
+          // Obtener un número aleatorio de página (puede ajustarse según tus necesidades)
+          const randomPage = Math.floor(Math.random() * 500) + 1;
+    
+          // Obtener la lista de películas de la página aleatoria
+          const response = await fetch(`${apiUrl}/movie/popular?api_key=${apiKey}&page=${randomPage}`);
+          const data = await response.json();
+    
+          // Obtener una película aleatoria de la lista
+          const randomMovie = data.results[Math.floor(Math.random() * data.results.length)];
+    
+          return randomMovie;
+        } catch (error) {
+          console.error('Error fetching random movie', error);
+          throw error;
+        }
+      },
+     
     
 
       async getUpcomingMovies(pageCount = 1) {
