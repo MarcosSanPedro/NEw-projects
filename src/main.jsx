@@ -12,6 +12,7 @@ import { Movies } from "./pages/Movies.jsx";
 import { TVShows } from "./pages/TVShows.jsx";
 import Search from "./pages/Search.jsx";
 import MovieDetails from "./components/MovieDetails.jsx";
+import TVShowDetails from "./components/TVShowsDetails.jsx";
 
 
 const withAuthProvider = (Component, requireAuth = false) => {
@@ -31,6 +32,7 @@ const withAuthProvider = (Component, requireAuth = false) => {
 
 const router = createBrowserRouter([
     {
+        
         path: "/",
         element: withAuthProvider(App, true),
         children: [
@@ -51,10 +53,12 @@ const router = createBrowserRouter([
                 element: <Search/>,
             },
             {
-                path: "/movies/:id",
+                path: "/details/:id",
                 element: <MovieDetails/>,
             },
+
         ],
+        
     },
     {
         path: "/Private",

@@ -1,7 +1,9 @@
 // Recommendation.js
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
 import tmdbService from './../utils/tmdbService';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons';
 
 const Recommendation = () => {
   const [media, setMedia] = useState(null);
@@ -14,8 +16,6 @@ const Recommendation = () => {
       console.error('Error fetching recommendation', error);
     }
   };
-
-  
 
   useEffect(() => {
     loadRecommendation();
@@ -40,11 +40,11 @@ const Recommendation = () => {
           <h2>{media.title || media.name}</h2>
           <p>{media.overview}</p>
           <div>
-            <button onClick={handleLikeClick}>Like</button>
-            <button onClick={handleDislikeClick}>Dislike</button>
+            <button onClick={handleLikeClick}><FontAwesomeIcon icon={faThumbsUp} /></button>
+            <button onClick={handleDislikeClick}><FontAwesomeIcon icon={faThumbsDown} /></button>
           </div>
           {/* Agrega un enlace a la página de detalles */}
-          <Link to={`/details/${media.id}`}>Ver detalles</Link>
+          <Link to={`/${media.media_type}/${media.id}`}>Ver detalles</Link>
         </div>
       ) : (
         <p>Cargando recomendación...</p>

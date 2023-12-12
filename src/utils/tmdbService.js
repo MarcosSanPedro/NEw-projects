@@ -150,7 +150,25 @@ const tmdbService = {
       }
     },
   
-  
+    async  getMovieDetails(movieId) {
+      try {
+        const response = await fetch(`${apiUrl}/movie/${movieId}?api_key=${apiKey}`);
+        const data = await response.json();
+        return data;
+      } catch (error) {
+        throw new Error('Error fetching movie details', error);
+      }
+    },
+
+    async getTVShowDetails(tvShowId) {
+      try {
+        const response = await fetch(`${apiUrl}/tv/${tvShowId}?api_key=${apiKey}`);
+        const data = await response.json();
+        return data;
+      } catch (error) {
+        throw new Error('Error fetching TV show details', error);
+      }
+    },
     
     async getTopRatedTVShows(pageCount = 1) {
       // Crea un array de promesas para realizar solicitudes para cada página

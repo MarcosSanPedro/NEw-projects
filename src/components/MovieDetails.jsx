@@ -1,42 +1,65 @@
-// MovieDetails.js
 import { useEffect, useState } from 'react';
-import tmdbService from '../utils/tmdbService';
+import { useParams } from 'react-router-dom';
 
-const MovieDetails = ({ match }) => {
-  const [movieDetails, setMovieDetails] = useState(null);
+const MovieDetails = () => {
+  const { id } = useParams();
+  const [mediaDetails, setMediaDetails] = useState(null);
 
   useEffect(() => {
-    const fetchMovieDetails = async () => {
+    const fetchMediaDetails = async () => {
       try {
-        const movieId = match.params.id;
-        const details = await tmdbService.getMovieDetails(movieId);
-        setMovieDetails(details);
+        const response = await fetch(
+          `https://api.themoviedb.org/3/movie/${id}?api_key=962b101b6006d8adaf4068e595dc24e7`
+        );
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const data = await response.json();
+
+        setMediaDetails({
+          type: 'movie',
+          title: data.title,
+          overview: data.overview,
+          release_date: data.release_date,
+          vote_average: data.vote_average,
+          genres: data.genres,
+          poster_path: data.poster_path,
+        });
       } catch (error) {
-        console.error('Error fetching movie details', error);
+        console.error('Error fetching media details:', error);
       }
     };
 
-    fetchMovieDetails();
-  }, [match.params.id]);
+    fetchMediaDetails();
+  }, [id]);
+
+  if (!mediaDetails) {
+    return <div>Loading...</div>;
+  }
+
+  const {
+    type,
+    title,
+    overview,
+    release_date,
+    vote_average,
+    genres,
+    poster_path,
+  } = mediaDetails;
 
   return (
     <div>
-      {movieDetails ? (
-        <div>
-          <img
-            src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`}
-            alt={movieDetails.title}
-          />
-          <h2>{movieDetails.title}</h2>
-          <p>{movieDetails.overview}</p>
-          <p>Valoración: {movieDetails.vote_average}</p>
-          <p>Fecha de lanzamiento: {movieDetails.release_date}</p>
-          <p>Géneros: {movieDetails.genres.map((genre) => genre.name).join(', ')}</p>
-          {/* Agrega más detalles según tus necesidades */}
-        </div>
-      ) : (
-        <p>Cargando detalles de la película...</p>
-      )}
+      <img
+        src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+        alt={type === 'movie' ? title : name}
+      />
+      <h2>{type === 'movie' ? title : name}</h2>
+      <p>{overview}</p>
+      <p>Release Date: {release_date}</p>
+      <p>Rating: {vote_average}</p>
+      <p>Genres: {genres.map((genre) => genre.name).join(', ')}</p>
     </div>
   );
 };
