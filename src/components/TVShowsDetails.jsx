@@ -1,6 +1,6 @@
 // TVShowDetails.js
-import { useEffect, useState } from 'react';
-import tmdbService from './../utils/tmdbService';
+import React, { useEffect, useState } from 'react';
+import tmdbService from '../utils/tmdbService';
 
 const TVShowDetails = ({ match }) => {
   const [tvShowDetails, setTVShowDetails] = useState(null);
@@ -42,3 +42,4 @@ const TVShowDetails = ({ match }) => {
 };
 
 export default TVShowDetails;
+``
