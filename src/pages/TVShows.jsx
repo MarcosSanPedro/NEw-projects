@@ -9,10 +9,8 @@ export function TVShows() {
   const fetchCategoryTvShows = async () => {
     try {
       if (selectedTvShow) {
-        const totalPages = 6; // Cambia este número al número de páginas que desees
+        const totalPages = 6; 
         const tvShows = await tmdbService.searchTvShowsByGenre(selectedTvShow, totalPages);
-        
-        // Barajar las películas aleatoriamente
         const shuffledTvShow = shuffleArray(tvShows);
         
         setGenreTvshow(shuffledTvShow);
