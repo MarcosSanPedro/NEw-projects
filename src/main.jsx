@@ -12,7 +12,7 @@ import { Movies } from "./pages/Movies.jsx";
 import { TVShows } from "./pages/TVShows.jsx";
 import Search from "./pages/Search.jsx";
 import MovieDetails from "./components/MovieDetails.jsx";
-import TVShowDetails from "./components/TVShowsDetails.jsx";
+// import TVShowDetails from "./components/TVShowsDetails.jsx";
 
 
 const withAuthProvider = (Component, requireAuth = false) => {

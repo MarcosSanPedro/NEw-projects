@@ -1,7 +1,10 @@
-import { useEffect, useState } from "react";
+/* eslint-disable react/prop-types */
+import { useEffect, useState, useContext } from "react";
 import tmdbService from "./../utils/tmdbService";
 import CategoryList from "../components/CategoryList";
 import Recommendation from "../components/Recommendation";
+import GridGenere from "../components/GridGenre";
+import { SearchResultsContext } from "../lib/context/search-context";
 
 const Home = () => {
     const [topRatedMovies, setTopRatedMovies] = useState([]);
@@ -20,6 +23,8 @@ const Home = () => {
         }
         return shuffledArray;
     };
+
+    const { searchResults, searchQuery } = useContext(SearchResultsContext);
 
     useEffect(() => {
         const fetchCategoryMovies = async () => {
@@ -53,11 +58,12 @@ const Home = () => {
 
     return (
         <div>
-            <h1>Movie Recommendation Platform</h1>
+            <h1 className="text-4xl text-center py-7">Movie Recommendation Platform</h1>
         
-            
+            {searchResults.length > 0 && (
+                <GridGenere title={searchQuery} items={searchResults} />
+            )}
             <Recommendation/>
-
             <CategoryList title="Top Rated Movies" items={topRatedMovies} />
             <CategoryList title="Top Rated TV Shows" items={topRatedTvShows} />
             <CategoryList title="Upcoming Movies" items={upcomingMovies} />

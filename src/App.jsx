@@ -1,22 +1,18 @@
 import { Navbar } from "./components/Navbar";
 import { Outlet } from "react-router-dom";
+import { useState } from "react";
+import { SearchResultsContext } from "./lib/context/search-context";
 
 function App() {
-    {
-        /* <Router>
-   <Routes>
-    <Route path='/' element={ <EventsPage/>} />
-    <Route path='/SignupPage' element={<SignupPage/>} />
-    <Route path='/MainPage' element={<Header/>}  />
-    <Route path='/EventsPage' element={<LoginPage/> }  /> 
-   </Routes>
-   </Router>
-) */
-    }
+    const [searchResults, setSearchResults] = useState([]);
+    const [searchQuery, setSearchQuery] = useState("");
+
     return (
-        <div className="">
-            <Navbar />
-            <Outlet />
+        <SearchResultsContext.Provider
+            value={{ searchResults, setSearchResults, searchQuery }}
+        >
+            <Navbar setSearchResults={setSearchResults} searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+            <Outlet searchResults={searchResults} />
             <footer className="p-10 footer bg-base-200 text-base-content footer-center">
                 <div>
                     <p>
@@ -25,7 +21,7 @@ function App() {
                     </p>
                 </div>
             </footer>
-        </div>
+        </SearchResultsContext.Provider>
     );
 }
 
