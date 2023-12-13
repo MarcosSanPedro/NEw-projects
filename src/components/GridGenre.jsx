@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 /* eslint-disable react/prop-types */
 const  GridGenre = ({ title, items }) => {
     return (
@@ -6,6 +8,7 @@ const  GridGenre = ({ title, items }) => {
             <div className="w-screen grid grid-cols-2 md:grid-cols-3  lg:grid-cols-4 gap-4">
                 {items.map((item) => (
                     <div key={item.id} className=" w-64 m-auto">
+                        <Link to={`/details/${item.id}`} key={item.id}>
                         <img
                             src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
                             alt={item.title}
@@ -18,7 +21,6 @@ const  GridGenre = ({ title, items }) => {
                             <h3 className="text-lg font-semibold">
                                 {item.name}
                             </h3>
-                           {/*  <p className="text-gray-500">{item.overview}</p> */}
                             <p className="text-gray-500">{item.release_date}</p>
 
                             <p className="text-yellow-500">
@@ -26,7 +28,7 @@ const  GridGenre = ({ title, items }) => {
                             </p>
                         </div>
                     
-                    
+                        </Link>
           </div>
                 ))}
             </div>

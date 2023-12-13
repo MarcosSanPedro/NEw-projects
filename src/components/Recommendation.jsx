@@ -1,5 +1,4 @@
-// Recommendation.js
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import tmdbService from './../utils/tmdbService';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -31,22 +30,25 @@ const Recommendation = () => {
  
 
   return (
-    <div className='w w-4/5 m-auto border border-black text-white bg-slate-600'>
+    <div className='w w-4/5 mb-10 md:w-3/5 m-auto border border-black text-white bg-slate-600'>
       {media ? (
-        <div className='flex gap-10'>
-          <img className='h h-72'
+        <div className='flex gap-10 relative'>
+          <div className='w-56'>
+          <img className='w-56 max-w-lg h-72'
             src={`https://image.tmdb.org/t/p/w500${media.poster_path}`}
             alt={media.title || media.name}
-          />
-          <div>
-          <h2>{media.title || media.name}</h2>
-          <p className='line line-clamp-3'>{media.overview}</p>
-          <div className='flex gap-6'>
+          /></div>
+          <div className='flex flex-col gap-3'>
+            <div className='flex flex-col gap-3 mt-2 h-44'>
+          <h2 className='tex text-3xl'>{media.title || media.name}</h2>
+          <p className='line line-clamp-5'>{media.overview}</p>
+          </div>
+          <div className='flex text-2xl gap-6'>
             <button onClick={handleLikeClick}><FontAwesomeIcon icon={faThumbsUp} /></button>
             <button onClick={handleDislikeClick}><FontAwesomeIcon icon={faThumbsDown} /></button>
           </div>
           {/* Agrega un enlace a la página de detalles */}
-          <Link to={`/${media.media_type}/${media.id}`}>Ver detalles</Link>
+          <Link to={`/details/${media.id}`} key={media.id}>Details</Link>
         </div>
         </div>
       ) : (

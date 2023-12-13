@@ -9,12 +9,9 @@ export function Movies() {
   const fetchGenreMovies = async () => {
     try {
       if (selectedGenre) {
-        const totalPages = 6; // Cambia este número al número de páginas que desees
+        const totalPages = 6; 
         const movies = await tmdbService.searchMoviesByGenre(selectedGenre, totalPages);
-        
-        // Barajar las películas aleatoriamente
         const shuffledMovies = shuffleArray(movies);
-        
         setGenreMovies(shuffledMovies);
       }
     } catch (error) {

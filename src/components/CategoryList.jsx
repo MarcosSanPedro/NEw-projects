@@ -3,7 +3,7 @@ import { useRef } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { Link } from "react-router-dom";
-import MovieDetails from "./MovieDetails";
+
 
 const CategoryList = ({ title, items }) => {
     const scrollRef = useRef(null);
@@ -13,12 +13,12 @@ const CategoryList = ({ title, items }) => {
         scrollRef.current.scrollLeft += scrollOffset;
         const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
   
-        // Si llegamos al final, retroceder al principio
+        
         if (scrollLeft + clientWidth === scrollWidth) {
           scrollRef.current.scrollLeft = 0;
         }
   
-        // Si retrocedemos más allá del principio, ir al final
+       
         if (scrollLeft === 0 && scrollOffset < 0) {
           scrollRef.current.scrollLeft = scrollWidth - clientWidth;
         }
@@ -32,14 +32,17 @@ const CategoryList = ({ title, items }) => {
         <div className="flex items-center overflow-hidden">
           {/* Flecha izquierda */}
           <div
-            className="absolute left-0 top-1/2 transform -translate-y-1/2 cursor-pointer z-10"
+            className="absolute left-3 top-1/2 text-4xl transform -translate-y-1/2 cursor-pointer z-10 w-12 h-12 rounded-full bg-green-500"
             onClick={() => handleScroll(-200)}
           >
-             <FontAwesomeIcon icon={faChevronLeft} />
+            <div className="ml-3 ">
+             <FontAwesomeIcon icon={faChevronLeft}/>
+             </div>
           </div>
   
           <div ref={scrollRef} className="flex space-x-4 overflow-x-scroll overflow-hidden scrollbar-hide relative">
                 {items.map((item) => (
+                    <Link to={`/details/${item.id}`} key={item.id}>
                     <div key={item.id} className="flex-shrink-0 w-64">
                         <img
                             src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
@@ -47,12 +50,12 @@ const CategoryList = ({ title, items }) => {
                             className="w-full h-64 object-cover rounded-md"
                         />
                         <div className="mt-2">
-                        <Link to={`/details/${item.id}`} key={item.id}>
+                        
   <h3 className="text-lg font-semibold">
     {item.title || item.name}
   </h3>
-</Link>
-                            {/* <p className="text-gray-500">{item.overview}</p> */}
+
+                          
                             <p className="text-gray-500">{item.release_date}</p>
 
                             <p className="text-yellow-500">
@@ -60,15 +63,18 @@ const CategoryList = ({ title, items }) => {
                             </p>
                         </div>
                     </div>
+                    </Link>
                 ))}
             </div>
   
           {/* Flecha derecha */}
           <div
-            className="absolute right-0 top-1/2 transform -translate-y-1/2 cursor-pointer z-10" 
+            className="absolute text-4xl right-0 top-1/2 transform -translate-y-1/2 cursor-pointer z-10 w-12 h-12 rounded-full bg-green-500 mr-3" 
             onClick={() => handleScroll(200)}
           >
+            <div className="ml-3">
             <FontAwesomeIcon icon={faChevronRight} />
+            </div>
           </div>
         </div>
       </div>
