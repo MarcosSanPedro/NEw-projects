@@ -1,5 +1,3 @@
-//checks to see if user is logged in/out subscribed etc...
-
 import { createContext, useContext, useEffect, useState } from 'react';
 import { auth, db } from '../firebase';
 import {
@@ -8,7 +6,7 @@ import {
   signOut,
   onAuthStateChanged,
 } from 'firebase/auth';
-import {setDoc,doc} from 'firebase/firestore'
+import { setDoc, doc } from 'firebase/firestore';
 
 const AuthContext = createContext();
 
@@ -18,8 +16,8 @@ export function AuthContextProvider({ children }) {
   function signUp(email, password) {
     createUserWithEmailAndPassword(auth, email, password);
     setDoc(doc(db, 'users', email), {
-        savedShows: []
-    })
+      savedShows: [],
+    });
   }
 
   function logIn(email, password) {
@@ -30,6 +28,7 @@ export function AuthContextProvider({ children }) {
     return signOut(auth);
   }
 
+  // checks to see if the user is logged in or not
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
@@ -37,7 +36,7 @@ export function AuthContextProvider({ children }) {
     return () => {
       unsubscribe();
     };
-  });
+  }, []);
 
   return (
     <AuthContext.Provider value={{ signUp, logIn, logOut, user }}>
@@ -46,6 +45,6 @@ export function AuthContextProvider({ children }) {
   );
 }
 
-export function UserAuth() {
+export function useAuth() {
   return useContext(AuthContext);
 }

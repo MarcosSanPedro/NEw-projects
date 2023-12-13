@@ -1,11 +1,9 @@
-//looks to see if user is authorized to use landing page
-
 import React from 'react';
 import { Navigate } from 'react-router-dom';
-import { UserAuth } from '../context/AuthContext';
+import { useAuth } from '../context/AuthContext';
 
 const ProtectedRoute = ({ children }) => {
-    const {user} = UserAuth()
+    const {user} = useAuth()
 
   if (!user) {
     return <Navigate to='/' />;

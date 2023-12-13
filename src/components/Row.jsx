@@ -1,5 +1,3 @@
-//row with movies and slider controls
-
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Movie from './Movie';
@@ -15,16 +13,16 @@ const Row = ({ title, fetchURL, rowID }) => {
   }, [fetchURL]);
 
   const slideLeft = () => {
-    var slider = document.getElementById('slider' + rowID);
+    let slider = document.getElementById('slider' + rowID);
     slider.scrollLeft = slider.scrollLeft - 500;
   };
   const slideRight = () => {
-    var slider = document.getElementById('slider' + rowID);
+    let slider = document.getElementById('slider' + rowID);
     slider.scrollLeft = slider.scrollLeft + 500;
   };
 
   return (
-    <>
+    <div className='mt-50'>
       <h2 className='text-white font-bold md:text-xl p-4'>{title}</h2>
       <div className='relative flex items-center group'>
         <MdChevronLeft
@@ -46,7 +44,7 @@ const Row = ({ title, fetchURL, rowID }) => {
           size={40}
         />
       </div>
-    </>
+    </div>
   );
 };
 

@@ -1,16 +1,17 @@
-//allow user to save movies/shows
-
 import React, { useState, useEffect } from 'react';
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
-import { UserAuth } from '../context/AuthContext';
+import { useAuth } from '../context/AuthContext';
 import { db } from '../firebase';
 import { updateDoc, doc, onSnapshot } from 'firebase/firestore';
 import { AiOutlineClose } from 'react-icons/ai';
 
+
+//initialize the variable 'movies'
 const SavedShows = () => {
   const [movies, setMovies] = useState([]);
-  const { user } = UserAuth();
+  const { user } = useAuth();
 
+  //implement horizontal scrolling within a container
   const slideLeft = () => {
     var slider = document.getElementById('slider');
     slider.scrollLeft = slider.scrollLeft - 500;
@@ -19,17 +20,20 @@ const SavedShows = () => {
     var slider = document.getElementById('slider');
     slider.scrollLeft = slider.scrollLeft + 500;
   };
-
+//retrives saved shows from the database from the user's email
   useEffect(() => {
     onSnapshot(doc(db, 'users', `${user?.email}`), (doc) => {
       setMovies(doc.data()?.savedShows);
     });
+
+  return () => unsubscribe();
   }, [user?.email]);
 
+  //allows user to delete saved movies from their profile
   const movieRef = doc(db, 'users', `${user?.email}`)
   const deleteShow = async (passedID) => {
       try {
-        const result = movies.filter((item) => item.id !== passedID)
+        const result = movies.filter((item) => item.id !== passedID) //moves the ID and pushes it back everything is done on the client side and not the server side.
         await updateDoc(movieRef, {
             savedShows: result
         })
@@ -54,7 +58,7 @@ const SavedShows = () => {
           {movies.map((item) => (
             <div
               key={item.id}
-              className='w-[160px] sm:w-[200px] md:w-[240px] lg:w-[280px] inline-block cursor-pointer relative p-2'
+              className='w-160px sm:w-200px md:w-240px lg:w-280px inline-block cursor-pointer relative p-2'
             >
               <img
                 className='w-full h-auto block'

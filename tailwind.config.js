@@ -1,14 +1,21 @@
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-    content: ['./dist/*.html',
-    './src/**/*.{js,ts,jsx,tsx}'],
+// Use import syntax for ESM
+import { Config } from 'tailwindcss';
+
+/** @type {Config} */
+const config = {
+  content: [
+    './pages/**/*.{js,jsx}',
+    './components/**/*.{js,jsx}',
+    './app/**/*.{js,jsx}',
+    './src/**/*.{js,jsx}',
+	],
   theme: {
     extend: {},
   },
-<<<<<<< HEAD
-  plugins: [require('tailwind-scrollbar-hide')],
-}
-=======
-  //plugins: [require("daisyui")],
-}
-//>>>>>>> 4620c9a58f367237505840fbb594455ca33dafec
+  plugins: [
+    require('tailwind-scrollbar-hide'),
+    require('daisyui'),
+  ],
+};
+
+export default config;
