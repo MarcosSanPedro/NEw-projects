@@ -49,17 +49,22 @@ const MovieDetails = () => {
     poster_path,
   } = mediaDetails;
 
+  
   return (
-    <div>
-      <img
+    <div className='flex flex-col lg:flex-row mt-10'>
+      <div className=' w-3/4 m-auto lg:w-full h-full '>
+      <img className='m-auto max-w-full lg:max-w-xl h-96 rounded'
         src={`https://image.tmdb.org/t/p/w500${poster_path}`}
         alt={type === 'movie' ? title : name}
       />
+      </div>
+      <div className='flex flex-col gap-5'>
       <h2>{type === 'movie' ? title : name}</h2>
       <p>{overview}</p>
       <p>Release Date: {release_date}</p>
-      <p>Rating: {vote_average}</p>
+      <p>Rating: {vote_average}⭐</p>
       <p>Genres: {genres.map((genre) => genre.name).join(', ')}</p>
+      </div>
     </div>
   );
 };
