@@ -4,7 +4,6 @@ import { useAuth } from '../context/AuthContext';
 import { db } from '../firebase';
 import { arrayUnion, doc, updateDoc } from 'firebase/firestore';
 import { Link } from 'react-router-dom';
-import MovieDetails from './MovieDetails';
 
 const Movie = ({ item }) => {
   const [like, setLike] = useState(false);
