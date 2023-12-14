@@ -1,5 +1,5 @@
-import Navbar from "../components/NavBarV1";
+import Navbar from '../components/NavBarV1'
 
 export function ParkInfoPage() {
-    return <Navbar />;
+	return <Navbar />
 }

@@ -1,10 +1,10 @@
 import { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { signInUser, signUpUser } from '../lib/firebase'
+import { signInUser } from '../lib/firebase'
+import { Link } from 'react-router-dom'
 import { AuthContext } from '../lib/context/auth-context'
 
-export function AuthInputs() {
-	const [newUser, setNewUser] = useState(false)
+export function SignUp() {
 	const [formField, setFormField] = useState({
 		email: '',
 		password: '',
@@ -33,23 +33,14 @@ export function AuthInputs() {
 		}
 	}, [])
 
-	const [errorMessage, setErrorMessage] = useState('')
 	const handleSubmit = async (e) => {
 		e.preventDefault()
 		try {
-			if (newUser) {
-				await signUpUser(email, password)
-			} else {
-				await signInUser(email, password)
-			}
+			const userCredentials = await signInUser(email, password)
+			if (userCredentials) ({ email: '', password: '' })
 			navigate('/')
 		} catch (error) {
-			console.log(error.message, error)
-			error.message.includes('invalid-credential')
-				? setErrorMessage('Invalid email or password, try again')
-				: setErrorMessage(
-						'An unknown error occurred. Please try again later.',
-					)
+			console.log('error login', error)
 		}
 	}
 
@@ -64,16 +55,13 @@ export function AuthInputs() {
 			<div className="fixed w-full px-4 py-24 z-50">
 				<div className="max-w-[450px] h-[600px] mx-auto bg-black/75 text-white">
 					<div className="max-w-[320px] mx-auto py-16">
-						<h1 className="text-3xl font-bold">
-							{newUser ? 'Sign up' : 'Log In'}
-						</h1>
+						<h1 className="text-3xl font-bold">Sign Up</h1>
 
 						<form
 							onSubmit={handleSubmit}
 							className="w-full flex flex-col py-4"
 						>
 							<input
-								required
 								onChange={handleChange}
 								className="p-3 my-2 bg-gray-700 rouded"
 								type="email"
@@ -83,7 +71,6 @@ export function AuthInputs() {
 								value={email}
 							/>
 							<input
-								required
 								onChange={handleChange}
 								className="p-3 my-2 bg-gray-700 rouded"
 								type="password"
@@ -92,38 +79,26 @@ export function AuthInputs() {
 								name="password"
 								value={password}
 							/>
-							<span className="text-red-500 text-sm">
-								{errorMessage}
-							</span>
 							<button
 								className="bg-red-600 py-3 my-6 rounded font-bold"
 								type="submit"
 							>
-								{newUser ? 'Sign up' : 'Log In'}
+								Login
 							</button>
-						</form>
-
-						<div className="flex justify-between items-center text-sm text-gray-600">
-							<p>
-								<input className="mr-2" type="checkbox" />
-								Remember me
+							<div className="flex justify-between items-center text-sm text-gray-600">
+								<p>
+									<input className="mr-2" type="checkbox" />
+									Remember me
+								</p>
+								<p>Need Help?</p>
+							</div>
+							<p className="py-8">
+								<span className="text-gray-600">
+									Already have an account?
+								</span>{' '}
+								<Link to="/login">Sign In</Link>
 							</p>
-							<p>Need Help?</p>
-						</div>
-						<div className="py-8">
-							<span className="text-gray-600">
-								New to Netflix?
-							</span>{' '}
-							{!newUser ? (
-								<button onClick={() => setNewUser(true)}>
-									Sign up
-								</button>
-							) : (
-								<button onClick={() => setNewUser(false)}>
-									Log In
-								</button>
-							)}
-						</div>
+						</form>
 					</div>
 				</div>
 			</div>
