@@ -59,10 +59,7 @@ const Home = () => {
 			<h1 className="text-4xl text-center py-7">
 				Movie Recommendation Platform
 			</h1>
-
-			{searchResults.length > 0 && (
-				<GridGenere title={searchQuery} items={searchResults} />
-			)}
+			
 			<Recommendation />
 			<CategoryList title="Top Rated Movies" items={topRatedMovies} />
 			<CategoryList title="Top Rated TV Shows" items={topRatedTvShows} />

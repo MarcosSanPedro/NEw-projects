@@ -3,7 +3,7 @@ import { AuthContext } from './context/auth-context'
 import { useContext } from 'react'
 import { Navigate, useLocation } from 'react-router-dom'
 
-function RequireAuth({ children, to = 'login' }) {
+function RequireAuth({ children, to = 'auth' }) {
 	const { currentUser } = useContext(AuthContext)
 	const location = useLocation()
 

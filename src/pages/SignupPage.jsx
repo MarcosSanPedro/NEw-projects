@@ -40,7 +40,7 @@ export function SignUp() {
 			if (userCredentials) ({ email: '', password: '' })
 			navigate('/')
 		} catch (error) {
-			console.log('error login', error)
+			console.log('error auth', error)
 		}
 	}
 
@@ -96,7 +96,7 @@ export function SignUp() {
 								<span className="text-gray-600">
 									Already have an account?
 								</span>{' '}
-								<Link to="/login">Sign In</Link>
+								<Link to="/auth">Sign In</Link>
 							</p>
 						</form>
 					</div>

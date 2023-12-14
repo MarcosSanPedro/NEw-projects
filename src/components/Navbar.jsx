@@ -136,7 +136,7 @@ export function Navbar({ setSearchResults, searchQuery, setSearchQuery }) {
 							</ul>
 						</div>
 					) : (
-						<Link to="/login" className="btn">
+						<Link to="/auth" className="btn">
 							Log in
 						</Link>
 					)}
