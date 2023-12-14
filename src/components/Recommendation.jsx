@@ -35,7 +35,7 @@ const Recommendation = () => {
         <div className='flex gap-10 relative'>
           <div className='w-56'>
           <img className='w-56 max-w-lg h-72'
-            src={`https://image.tmdb.org/t/p/w500${media.poster_path}`}
+            src={media.poster_path ? `https://image.tmdb.org/t/p/w500${media.poster_path}` : "https://images.placeholders.dev/?width=256&height=256&text=404"}
             alt={media.title || media.name}
           /></div>
           <div className='flex flex-col gap-3'>
@@ -48,7 +48,7 @@ const Recommendation = () => {
             <button onClick={handleDislikeClick}><FontAwesomeIcon icon={faThumbsDown} /></button>
           </div>
           {/* Agrega un enlace a la página de detalles */}
-          <Link to={`/details/${media.id}`} key={media.id}>Details</Link>
+          <Link to={`/details/${media.title ? "movie" : "tv"}/${media.id}`} key={`${media.title || media.name}-${media.id + Math.random()}`}>Details</Link>
         </div>
         </div>
       ) : (

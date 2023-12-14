@@ -10,8 +10,8 @@ const Home = () => {
     const [topRatedMovies, setTopRatedMovies] = useState([]);
     const [topRatedTvShows, setTopRatedTvShows] = useState([]);
     const [upcomingMovies, setUpcomingMovies] = useState([]);
-    const [upcomingTvShows, setUpcomingTvShows] = useState([]); 
-    
+    const [upcomingTvShows, setUpcomingTvShows] = useState([]);
+
     const shuffleArray = (array) => {
         const shuffledArray = [...array];
         for (let i = shuffledArray.length - 1; i > 0; i--) {
@@ -59,17 +59,17 @@ const Home = () => {
     return (
         <div>
             <h1 className="text-4xl text-center py-7">Movie Recommendation Platform</h1>
-        
+
             {searchResults.length > 0 && (
                 <GridGenere title={searchQuery} items={searchResults} />
             )}
-            <Recommendation/>
+            <Recommendation />
             <CategoryList title="Top Rated Movies" items={topRatedMovies} />
             <CategoryList title="Top Rated TV Shows" items={topRatedTvShows} />
             <CategoryList title="Upcoming Movies" items={upcomingMovies} />
             <CategoryList title="Upcoming Tv Shows" items={upcomingTvShows} />
-            
-            </div>
+
+        </div>
     );
 };
 

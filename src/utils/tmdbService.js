@@ -1,4 +1,4 @@
-const apiKey = "962b101b6006d8adaf4068e595dc24e7"; // Reemplaza con tu clave API de TMDB
+const apiKey = import.meta.env.VITE_MOVIES_KEY; // Reemplaza con tu clave API de TMDB
 const apiUrl = "https://api.themoviedb.org/3";
 
 const tmdbService = {

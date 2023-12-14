@@ -24,7 +24,7 @@ const TVShowDetails = ({ match }) => {
       {tvShowDetails ? (
         <div>
           <img
-            src={`https://image.tmdb.org/t/p/w500${tvShowDetails.poster_path}`}
+            src={TVShowDetails.poster_path ? `https://image.tmdb.org/t/p/w500${TVShowDetails.poster_path}` : "https://images.placeholders.dev/?width=256&height=256&text=404"}
             alt={tvShowDetails.name}
           />
           <h2>{tvShowDetails.name}</h2>

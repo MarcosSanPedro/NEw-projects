@@ -6,12 +6,11 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import RequireAuth from "./lib/require-auth.jsx";
 import { AuthProvider } from "./lib/context/auth-context.jsx";
 import Home from "./pages/Home.jsx";
-import { LoginInputs } from "./components/LoginInputs.jsx";
+import { AuthInputs } from "./components/AuthInputs.jsx";
 import React from "react";
 import { Movies } from "./pages/Movies.jsx";
 import { TVShows } from "./pages/TVShows.jsx";
 import MovieDetails from "./components/MovieDetails.jsx";
-import { SignUp } from "./pages/SignupPage.jsx";
 import UserProfile from "./pages/UserPage.jsx";
 
 
@@ -49,7 +48,7 @@ const router = createBrowserRouter([
                 element: <TVShows/>,
             },
             {
-                path: "/details/:id",
+                path: "/details/:type/:id",
                 element: <MovieDetails/>,
             },
 
@@ -61,12 +60,8 @@ const router = createBrowserRouter([
         element: withAuthProvider(UserProfile, true),
     },
     {
-        path: "/login",
-        element: withAuthProvider(LoginInputs),
-    },
-    {
-        path: "/signup",
-        element: withAuthProvider(SignUp),
+        path: "/auth",
+        element: withAuthProvider(AuthInputs),
     },
 ]);
 
