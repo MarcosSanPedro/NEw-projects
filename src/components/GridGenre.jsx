@@ -5,7 +5,7 @@ const GridGenre = ({ title, items }) => {
 	return (
 		<div className="mb-8 w-screen ">
 			<h2 className="text-2xl font-bold mb-4">{title}</h2>
-			<div className="w-screen grid grid-cols-2 md:grid-cols-3  lg:grid-cols-4 gap-4">
+			<div className="w-screen grid grid-cols-1 md:grid-cols-2  lg:grid-cols-4 gap-4">
 				{items.map((item) => (
 					<div key={item.id} className=" w-64 m-auto">
 						<Link
