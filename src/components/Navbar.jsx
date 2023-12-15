@@ -20,7 +20,7 @@ export function Navbar({ setSearchResults, searchQuery, setSearchQuery }) {
 
 	return (
 		<>
-			<div className="navbar bg-base-100 justify-between">
+			<div className="navbar bg-black mb-5 text-white justify-between">
 				<div className="navbar-start w-fit">
 					<div className="dropdown">
 						<div
@@ -45,7 +45,7 @@ export function Navbar({ setSearchResults, searchQuery, setSearchQuery }) {
 						</div>
 						<ul
 							tabIndex={0}
-							className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+							className="menu menu-sm dropdown-content mt-3 z-[1] p-2 text-black shadow bg-base-100 rounded-box w-52"
 						>
 							<li>
 								<Link to="/">Home</Link>
@@ -75,22 +75,19 @@ export function Navbar({ setSearchResults, searchQuery, setSearchQuery }) {
 						</li>
 					</ul>
 					<form
-						className="join lg:hidden hidden md:flex w-full"
+						className=" bg-black lg:hidden hidden md:flex w-full"
 						onSubmit={handleSearchSubmit}
 					>
-						<div>
-							<div>
-								<input
-									type="text"
-									id="searchQuery"
-									value={searchQuery}
-									onChange={(e) =>
-										setSearchQuery(e.target.value)
-									}
-									className="input input-bordered join-item w-24 md:w-auto"
-								/>
-							</div>
+						<div className="b bg-black w-full">
+							<input
+								type="text"
+								id="searchQuery"
+								value={searchQuery}
+								onChange={(e) => setSearchQuery(e.target.value)}
+								className="input input-bordered join-item w-24 block md:w-auto"
+							/>
 						</div>
+
 						<div className="indicator">
 							<button type="submit" className="btn join-item">
 								Search
@@ -109,13 +106,13 @@ export function Navbar({ setSearchResults, searchQuery, setSearchQuery }) {
 								<div className="w-10 rounded-full">
 									<img
 										alt="Tailwind CSS Navbar component"
-										src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+										src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1eQLS9JeAz0NJW0Kcr4K0TDcMe3l_zvnzYjwuZTJOuw&s"
 									/>
 								</div>
 							</div>
 							<ul
 								tabIndex={0}
-								className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
+								className="mt-3 z-[1] p-2 text-black shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
 							>
 								<li>
 									<Link to="/UserProfile">
@@ -124,9 +121,6 @@ export function Navbar({ setSearchResults, searchQuery, setSearchQuery }) {
 											Profile
 										</a>
 									</Link>
-								</li>
-								<li>
-									<a>Settings</a>
 								</li>
 								<li>
 									<button onClick={SignOutUser}>

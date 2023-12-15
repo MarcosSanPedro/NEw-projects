@@ -50,7 +50,7 @@ const MovieDetails = () => {
 
 	return (
 		<div className="flex flex-col lg:flex-row mt-10">
-			<div className=" w-3/4 m-auto lg:w-full h-full ">
+			<div className="m-auto lg:h-full ml-16">
 				<img
 					className="m-auto max-w-full lg:max-w-xl h-96 rounded"
 					src={
@@ -61,8 +61,8 @@ const MovieDetails = () => {
 					alt={title || name}
 				/>
 			</div>
-			<div className="flex flex-col gap-5">
-				<h2>{title || name}</h2>
+			<div className="flex flex-col gap-5 text-white mt-3 w-4/5 mr-4 ml-12">
+				<h2 className="text-3xl">{title || name}</h2>
 				<p>{overview}</p>
 				<p>Release Date: {release_date}</p>
 				<p>Rating: {vote_average}⭐</p>

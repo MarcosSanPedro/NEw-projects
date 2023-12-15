@@ -1,7 +1,6 @@
-// TVShowDetails.js
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import tmdbService from '../utils/tmdbService'
-
+/* eslint-disable react/prop-types */
 const TVShowDetails = ({ match }) => {
 	const [tvShowDetails, setTVShowDetails] = useState(null)
 

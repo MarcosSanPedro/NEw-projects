@@ -46,6 +46,7 @@ export function Movies() {
 				id="genre"
 				onChange={(e) => setSelectedGenre(e.target.value)}
 				value={selectedGenre}
+				className="p-1 rounded mt-5"
 			>
 				<option value="28">Action</option>
 				<option value="12">Adventure</option>
