@@ -47,6 +47,7 @@ export function TVShows() {
 				id="genre"
 				onChange={(e) => setSelectedTvShow(e.target.value)}
 				value={selectedTvShow}
+				className="p-1 rounded mt-5"
 			>
 				<option value="10759">Action & Adventure</option>
 				<option value="16">Animation</option>

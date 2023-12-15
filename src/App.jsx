@@ -4,7 +4,6 @@ import { useState } from 'react'
 import { SearchResultsContext } from './lib/context/search-context'
 import GridGenre from './components/GridGenre'
 
-
 function App() {
 	const [searchResults, setSearchResults] = useState([])
 	const [searchQuery, setSearchQuery] = useState('')
@@ -19,16 +18,12 @@ function App() {
 				setSearchQuery={setSearchQuery}
 			/>
 			{searchResults.length > 0 && (
-				
 				<GridGenre title={searchQuery} items={searchResults} />
 			)}
 			<Outlet searchResults={searchResults} />
-			<footer className="p-10 footer bg-base-200 text-base-content footer-center">
+			<footer className="p-10 footer text-white bg-teal-950 footer-center">
 				<div>
-					<p>
-						Website made with{' '}
-						<a href="https://windmillui.com">Windmill UI</a>
-					</p>
+					<h2 className=" text-2xl">Social Medias Coming Soon!!!!</h2>
 				</div>
 			</footer>
 		</SearchResultsContext.Provider>

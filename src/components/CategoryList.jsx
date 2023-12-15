@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useEffect, useRef } from 'react'
+import { useRef } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
 	faChevronLeft,
@@ -27,7 +27,7 @@ const CategoryList = ({ title, items }) => {
 
 	return (
 		<div className="mb-8 relative">
-			<h2 className="text-2xl font-bold mb-4">{title}</h2>
+			<h2 className="text-2xl text-white font-bold mb-4">{title}</h2>
 			<div className="flex items-center overflow-hidden">
 				{/* Flecha izquierda */}
 				<div
@@ -45,6 +45,7 @@ const CategoryList = ({ title, items }) => {
 				>
 					{items.map((item) => (
 						<Link
+							className="text-white"
 							to={`/details/${item.title ? 'movie' : 'tv'}/${
 								item.id
 							}`}
@@ -52,7 +53,7 @@ const CategoryList = ({ title, items }) => {
 								item.id + Math.random()
 							}`}
 						>
-							<div className="flex-shrink-0 w-64">
+							<div className="flex-shrink-0 w-64 scr">
 								<img
 									src={
 										item.poster_path

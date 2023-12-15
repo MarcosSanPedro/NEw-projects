@@ -29,10 +29,10 @@ const Recommendation = () => {
 	}
 
 	return (
-		<div className="w w-4/5 mb-10 md:w-3/5 m-auto border border-black text-white bg-slate-600">
+		<div className="w w-4/5 mb-10 md:w-3/5 m-auto border border-black text-white bg-zinc-900">
 			{media ? (
-				<div className="flex gap-10 relative">
-					<div className="w-56">
+				<div className="sm:flex gap-10 relative">
+					<div className="w-56 m-auto">
 						<img
 							className="w-56 max-w-lg h-72"
 							src={
@@ -53,15 +53,22 @@ const Recommendation = () => {
 							</p>
 						</div>
 						<div className="flex text-2xl gap-6">
-							<button onClick={handleLikeClick}>
+							<button
+								onClick={handleLikeClick}
+								className="text-green-500 text-xl hover:text-white"
+							>
 								<FontAwesomeIcon icon={faThumbsUp} />
 							</button>
-							<button onClick={handleDislikeClick}>
+							<button
+								onClick={handleDislikeClick}
+								className="text-red-500 text-xl hover:text-white"
+							>
 								<FontAwesomeIcon icon={faThumbsDown} />
 							</button>
 						</div>
-						{/* Agrega un enlace a la página de detalles */}
+
 						<Link
+							className=" hover:text-black"
 							to={`/details/${media.title ? 'movie' : 'tv'}/${
 								media.id
 							}`}
@@ -69,7 +76,7 @@ const Recommendation = () => {
 								media.id + Math.random()
 							}`}
 						>
-							Details
+							See More Details
 						</Link>
 					</div>
 				</div>

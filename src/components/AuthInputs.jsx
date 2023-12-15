@@ -112,7 +112,7 @@ export function AuthInputs() {
 						</div>
 						<div className="py-8">
 							<span className="text-gray-600">
-								New to Netflix?
+								New to SamaMovies?
 							</span>{' '}
 							{!newUser ? (
 								<button onClick={() => setNewUser(true)}>
