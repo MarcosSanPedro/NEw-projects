@@ -23,7 +23,7 @@ function App() {
 			<Outlet searchResults={searchResults} />
 			<footer className="p-10 footer text-white bg-teal-950 footer-center">
 				<div>
-					<h2 className=" text-2xl">Social Medias Coming Soon!!!!</h2>
+					<h2 className=" text-2xl">Social Media&apos;s Coming Soon!!!!</h2>
 				</div>
 			</footer>
 		</SearchResultsContext.Provider>
