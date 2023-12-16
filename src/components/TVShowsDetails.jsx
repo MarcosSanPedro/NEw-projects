@@ -32,7 +32,7 @@ const TVShowDetails = ({ match }) => {
 					/>
 					<h2>{tvShowDetails.name}</h2>
 					<p>{tvShowDetails.overview}</p>
-					<p>Valoración: {tvShowDetails.vote_average}</p>
+					<p>Ratings: {tvShowDetails.vote_average}</p>
 					<p>Fecha de lanzamiento: {tvShowDetails.first_air_date}</p>
 					<p>
 						Géneros:{' '}

@@ -73,7 +73,7 @@ const CategoryList = ({ title, items }) => {
 									</p>
 
 									<p className="text-yellow-500">
-										Valoración: {item.vote_average}
+										Ratings: {item.vote_average}
 									</p>
 								</div>
 							</div>
